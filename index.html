@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Crew Birthday Image Generator</title>
+<style>
+  body {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;
+    font-family: Arial, sans-serif; background: #222; color: white;
+    margin: 0;
+  }
+  button {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+  #message {
+    margin-bottom: 2rem;
+    font-weight: bold;
+    min-height: 2rem;
+  }
+  canvas {
+    border: 2px solid white;
+    max-width: 90vw;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+
+<button id="generateBtn">Generate Birthday Image</button>
+<div id="message"></div>
+<canvas id="birthdayCanvas" width="800" height="1000"></canvas>
+
+<script src="birthday.js"></script>
+</body>
+</html>
 
