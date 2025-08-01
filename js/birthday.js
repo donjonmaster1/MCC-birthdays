@@ -1,5 +1,5 @@
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT6UWkrXc1MeakaaZJPYzsxMO8qhN4Ds5ywb_o7sgmvw9ucISmUmJ-qBhe8po85tzVWunSeUpE0bmUr/pub?output=csv'; // replace with your sheet's CSV export URL
-const BASE_IMAGE_SRC = 'birthday_base.png'; // put your base image in repo and reference here
+const BASE_IMAGE_SRC = 'Happy Birthday Template.jpg'; // put your base image in repo and reference here
 
 const canvas = document.getElementById('birthdayCanvas');
 const ctx = canvas.getContext('2d');
