@@ -8,13 +8,42 @@ const messageDiv = document.getElementById('message');
 
 btn.addEventListener('click', async () => {
   messageDiv.textContent = 'Loading birthdays...';
+  console.log('🟢 Button clicked');
+
   try {
     const res = await fetch(SHEET_CSV_URL);
+    console.log('🟢 Fetched sheet:', res.status);
+
     if (!res.ok) throw new Error('Failed to fetch birthday sheet.');
     const csvText = await res.text();
+    console.log('🟢 Sheet content:', csvText);
+
     const birthdays = parseCSV(csvText);
     const today = new Date();
-    const todayStr = `${String(today.getMonth() + 1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')}`;
+    const todayStr = `${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}`;
+    console.log('🟢 Today is:', todayStr);
+
+    const matches = birthdays.filter(row => row.birthday === todayStr);
+    console.log('🟢 Matches found:', matches);
+
+    if (matches.length === 0) {
+      messageDiv.textContent = "No birthdays today.";
+      clearCanvas();
+      return;
+    }
+
+    const name = matches[0].name;
+    messageDiv.textContent = `Happy Birthday, ${name}!`;
+    console.log('🟢 Drawing image for:', name);
+
+    await generateImage(name);
+  } catch (err) {
+    messageDiv.textContent = 'Error: ' + err.message;
+    console.error('🔴 Error in main flow:', err);
+    clearCanvas();
+  }
+});
+
 
     // Find matching birthday(s)
     const matches = birthdays.filter(row => row.birthday === todayStr);
